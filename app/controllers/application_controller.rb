@@ -1,6 +1,7 @@
 require './config/environments'
 
 class ApplicationController < Sinatra::Base
+  include Helpers::InstanceMethods
   register Sinatra::ActiveRecordExtension
   configure do
     set :session_secret, "secret"
