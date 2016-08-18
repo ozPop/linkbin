@@ -1,5 +1,6 @@
 require 'bundler/setup'
 Bundler.require
+require 'rack-flash'
 
 configure :production, :development do
   db = URI.parse(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')

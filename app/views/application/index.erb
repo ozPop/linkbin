@@ -1,5 +1,9 @@
 <div class="main wrap">
 
+  <% if flash.has?(:message) %>
+    <div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><%= flash[:message] %></div>
+  <% end %>
+
   <div class="main index">
     <h1>Welcome to linxtr</h1>
     <hr>
