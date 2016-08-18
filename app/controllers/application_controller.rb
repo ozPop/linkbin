@@ -2,9 +2,15 @@ require './config/environments'
 
 class ApplicationController < Sinatra::Base
   register Sinatra::ActiveRecordExtension
-
+  configure do
+    set :session_secret, "secret"
+    enable :sessions
+    set :public_folder, 'public'
+    set :views, 'app/views'
+  end
+  
   get '/' do
-    "Hello World"
+    erb :'/application/index'
   end
 
 end

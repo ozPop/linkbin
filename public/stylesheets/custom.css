@@ -1,0 +1,10 @@
+/* GENERAL STYLES */
+.main.wrap {
+  min-height: 450px;
+  text-align: center;
+}
+
+#footer {
+  text-align: center;
+  border-top: 2px solid black;
+}
