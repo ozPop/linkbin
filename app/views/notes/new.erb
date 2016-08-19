@@ -8,10 +8,15 @@
       <h1>Bin your link(s)</h1>
 
       <form class="form " action="/notes" method="POST">
+        <label for="public">Public: </label>
+        <div class="slideThree">
+          <input type="checkbox" value=true id="slideThree" name="public"/>
+          <label for="slideThree"></label>
+        </div>
         <label for="description"></label>
         <input type="text" name="description" class="form-control" placeholder="Description" required autofocus>
         <label for="link"></label>
-        <input id="" type="text" name="link" class="form-control" placeholder="Link" required autofocus>
+        <input id="" type="text" name="links[]" class="form-control" placeholder="Link" required autofocus>
         <div class="input_fields_wrap">
           <button class="add_field_button">Add Another Link</button>
         </div>

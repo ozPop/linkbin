@@ -23,9 +23,9 @@ ActiveRecord::Schema.define(version: 20160818155352) do
   create_table "notes", force: :cascade do |t|
     t.string   "description"
     t.text     "content"
-    t.string   "links",       array: true
+    t.string   "links",         array: true
     t.datetime "date"
-    t.boolean  "private"
+    t.boolean  "public_access"
     t.integer  "user_id"
   end
 

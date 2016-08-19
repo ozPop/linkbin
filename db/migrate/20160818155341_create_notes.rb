@@ -5,7 +5,7 @@ class CreateNotes < ActiveRecord::Migration[4.2]
       col.text :content
       col.string :links, :array => true
       col.datetime :date
-      col.boolean :private
+      col.boolean :public_access
       col.integer :user_id
     end
   end

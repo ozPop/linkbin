@@ -25,7 +25,6 @@ class ApplicationController < Sinatra::Base
 
   post '/signup' do
     user = User.create(params)
-    binding.pry
     if user.save
       session[:user_id] = user.id
       flash[:message] = "Successfully Created Account"
@@ -54,7 +53,6 @@ class ApplicationController < Sinatra::Base
       redirect '/'
     else
       flash[:message] = "Something went wrong"
-      binding.pry
       redirect '/login'
     end
   end
