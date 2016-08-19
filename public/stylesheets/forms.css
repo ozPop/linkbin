@@ -1,14 +1,14 @@
-.form-signin
+.form
 {
     max-width: 330px;
     padding: 15px;
     margin: 0 auto;
 }
-.form-signin .form-signin-heading, .form-signin .checkbox
+.form .form-signin-heading, .form-signin
 {
     margin-bottom: 10px;
 }
-.form-signin .form-control
+.form .form-control
 {
     position: relative;
     font-size: 16px;
@@ -18,7 +18,7 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-.form-signin .form-control:focus
+.form .form-control:focus
 {
     z-index: 2;
 }
