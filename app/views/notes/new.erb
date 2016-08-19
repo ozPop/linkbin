@@ -8,6 +8,22 @@
     <div class="account-wall">
 
       <form class="form " action="/notes" method="POST">
+
+      <!-- topic select -->
+        <label for="select-topic">Select a topic: </label>
+        <select id="topic-multiselect" name="note[topic_ids][]" multiple="multiple">
+        <% Topic.all.each do |topic| %>
+          <option id="topic_<%=topic.id%>" value="<%=topic.id%>"><%= topic.name %></option>
+        <% end %>
+        </select>
+
+      <!-- topic create -->
+        <div>
+          <label for="create-topic">OR</label>
+          <input type="text" name="topic[name]" class="form-control" placeholder="Enter topic">
+        </div>
+
+      <!-- public toggle -->
         <div class="toggle-wrap">
           <div class="absolute-center">Enable Public Access: </div>
           <div class="slideThree">
@@ -15,10 +31,12 @@
             <label for="slideThree"></label>
           </div>
         </div>
+
+      <!-- description, links, content inputs -->
         <label for="description"></label>
         <input type="text" name="description" class="form-control" placeholder="Description" required autofocus>
         <label for="link"></label>
-        <input id="" type="text" name="links[]" class="form-control" placeholder="Link" required autofocus>
+        <input type="text" name="links[]" class="form-control" placeholder="Link" required autofocus>
         <div class="input_fields_wrap">
           <button class="add_field_button">Add Another Link</button>
         </div>

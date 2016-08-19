@@ -1,5 +1,10 @@
 
 
+$(document).ready(function() {
+    $('#topic-multiselect').multiselect();
+});
+
+
 // append another link
 $(document).ready(function() {
     var max_fields      = 10; //maximum input boxes allowed

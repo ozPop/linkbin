@@ -17,6 +17,7 @@ class NoteController < ApplicationController
       n.public_access = params.has_key?("public")
       n.user_id = session[:user_id]
     end
+    binding.pry
     note.save
     reditect '/users/show'
   end
