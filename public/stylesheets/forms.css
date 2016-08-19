@@ -67,7 +67,11 @@
 }
 
 
-/**********  CSS3 CHECKBOX STYLES *************/
+/**********  CSS3 TOGGLE CHECKBOX STYLES *************/
+
+.toggle-wrap {
+    display: flex;
+}
 
 /* Taken from : http://cssdeck.com/labs/css-checkbox-styles */
 
