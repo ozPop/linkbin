@@ -40,7 +40,7 @@ class NoteController < ApplicationController
       end
     end
     flash[:message] = "Success!"
-    redirect '/users/index'
+    redirect "/users/#{current_user(session).slug}"
   end
 
   get '/note/:id' do

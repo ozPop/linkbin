@@ -11,7 +11,7 @@
       <% @user.notes.reverse.each do |note| %>
         <div class="">
           <div>
-            <p style="text-align: left;">On <%= note.date.strftime("%c") %></p>
+            <p style="text-align: left;">On <%= note.date.strftime("%c") %>, by: <%= @user.username %></p>
             <% topics = " " %>
             <% note.topics.each do |topic| %>
               <% topics += topic.name + " " %>
@@ -25,7 +25,7 @@
           <p style="text-align: right;"><span><a href="/note/<%=note.id%>">View Item</a><span></p>
         </div>
       <% end %>
-    </div>
-  </div>
+    </div> <!-- ./end note wrap -->
+  </div> <!-- ./end content wrap -->
 
 </div>
