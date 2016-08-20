@@ -12,11 +12,11 @@
         <div class="">
           <div>
             <p style="text-align: left;">On <%= note.date.strftime("%c") %></p>
-            <% s = " " %>
+            <% topics = " " %>
             <% note.topics.each do |topic| %>
-              <% s += topic.name + " " %>
+              <% topics += topic.name + " " %>
             <% end %>
-            <p><%= s %></p>
+            <p><%= topics %></p>
           </div>
           <h2><%= note.description %></h2>
           <% note.links.each do |link| %>
