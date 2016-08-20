@@ -39,7 +39,8 @@ class NoteController < ApplicationController
         end
       end
     end
-    redirect '/users/show'
+    flash[:message] = "Success!"
+    redirect '/users/index'
   end
 
 

@@ -15,7 +15,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <% if logged_in? %>
-          <li><a href="/index">Home</a></li>
+          <li><a href="/users/<%=current_user(session).slug%>">Home</a></li>
           <li><a href="/notes/new">Add Link</a></li>
           <li><a href="/logout">Logout</a></li>
         <% else %>

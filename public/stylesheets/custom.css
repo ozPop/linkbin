@@ -10,6 +10,22 @@
   border-top: 2px solid black;
 }
 
+/* Layout styles */
+
+.content.wrap > h2 {
+  padding: 10px;
+  background-color: #f7f7f7;
+  margin-bottom: 0;
+}
+
+.note.wrap {
+  padding: 40px 10px 20px 10px;
+  background-color: #f7f7f7;
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
 /* Centering items in flex-box  */
 
 .absolute-center {
