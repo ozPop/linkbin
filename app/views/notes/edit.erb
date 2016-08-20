@@ -1,0 +1,53 @@
+
+<div class="main wrap">
+
+  <% if flash.has?(:message) %>
+    <div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><%= flash[:message] %></div>
+  <% end %>
+
+  <div class="content wrap">
+    <h2>Edit your bin item</h2>
+    <div class="note wrap">
+        <form class="form " action="/notes/<%=@note.id%>/edit" method="POST">
+          <input id="hidden" type="hidden" name="_method" value="patch">
+        <!-- topic select -->
+          <label for="select-topic">Select a topic: </label>
+          <select id="topic-multiselect" name="note[topic_ids][]" multiple="multiple">
+          <% Topic.all.each do |topic| %>
+            <option id="topic_<%= topic.id %>" value="<%= topic.id %>" <%= 'selected' if @note.topics.include?(topic) %>><%= topic.name %></option>
+          <% end %>
+          </select>
+
+        <!-- topic create -->
+          <div>
+            <label for="create-topic">OR</label>
+            <input type="text" name="topic[name]" class="form-control" placeholder="Enter topic">
+          </div>
+
+        <!-- public toggle -->
+          <div class="toggle-wrap">
+            <div class="absolute-center">Enable Public Access: </div>
+            <div class="slideThree">
+              <input type="checkbox" value=true id="slideThree" name="public" <%= 'checked' if @note.public_access %>>/>
+              <label for="slideThree"></label>
+            </div>
+          </div>
+
+        <!-- description, links, content inputs -->
+          <label for="description"></label>
+          <input type="text" name="description" class="form-control" value="<%= @note.description %>" required autofocus>
+          <label for="link"></label>
+          <% @note.links.each do |link| %>
+            <input type="text" name="links[]" class="form-control" value="<%= link %>" required autofocus>
+          <% end %>
+          <div class="input_fields_wrap">
+            <button class="add_field_button">Add Another Link</button>
+          </div>
+          <label for="content"></label>
+          <textarea type="textarea" name="content" class="form-control" required autofocus><%= @note.content %></textarea>
+          <button class="btn btn-lg btn-primary btn-block" type="submit" value="submit">Update</button>
+        </form>
+    </div> <!-- ./end note wrap -->
+  </div> <!-- ./end content wrap -->
+
+</div>

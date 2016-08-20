@@ -43,5 +43,26 @@ class NoteController < ApplicationController
     redirect '/users/index'
   end
 
+  get '/note/:id' do
+    if logged_in?
+      @note = Note.find(params[:id])
+      erb :'/notes/show'
+    else
+      redirect '/'
+    end
+  end
+
+  get '/notes/:id/edit' do
+    if logged_in? && current_user(session).id == Note.find(params[:id]).user_id
+      @note = Note.find(params[:id])
+      erb :'/notes/edit'
+    else
+      redirect '/'
+    end
+  end
+
+  patch '/notes/:id/edit' do
+
+  end
 
 end
