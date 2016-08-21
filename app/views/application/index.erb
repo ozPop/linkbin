@@ -9,5 +9,28 @@
     <hr>
     <p>Let me organize your links</p>
   </div>
+
+  <div class="content wrap">
+    <h2>Latest links in a bin: </h2>
+    <div class="note wrap">
+      <% Note.all.reverse.each do |note| %>
+        <div class="">
+          <div>
+            <p style="text-align: left;">On <%= note.date.strftime("%c") %>, by: <%= User.find(note.user_id).username %></p>
+            <% topics = " " %>
+            <% note.topics.each do |topic| %>
+              <% topics += topic.name + " " %>
+            <% end %>
+            <p><%= topics %></p>
+          </div>
+          <h2><%= note.description %></h2>
+          <% note.links.each do |link| %>
+            <a href="<%= link %>"><%= link %></a>
+          <% end %>
+          <p style="text-align: right;"><span><a href="/note/<%=note.id%>">View Item</a><span></p>
+        </div>
+      <% end %>
+    </div> <!-- ./end note wrap -->
+  </div> <!-- ./end content wrap -->
   
 </div>
