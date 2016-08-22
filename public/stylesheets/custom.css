@@ -26,6 +26,11 @@
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
+.date.topics {
+  display: flex;
+  justify-content: space-between;
+}
+
 /* Centering items in flex-box  */
 
 .absolute-center {

@@ -15,11 +15,12 @@
     <div class="note wrap">
       <% Note.all.reverse.each do |note| %>
         <div class="">
-          <div>
+          <div class="date topics">
             <p style="text-align: left;">On <%= note.date.strftime("%c") %>, by: <%= User.find(note.user_id).username %></p>
-            <% topics = " " %>
+            <% topics = "Categories: " %>
             <% note.topics.each do |topic| %>
-              <% topics += topic.name + " " %>
+              <% topics += topic.name %>
+              <% topics += ", " if topic != note.topics.last %>
             <% end %>
             <p><%= topics %></p>
           </div>

@@ -8,12 +8,15 @@
   <div class="content wrap">
     <h2><%= @note.description %></h2>
     <div class="note wrap">
+      <div class="date topics">
         <p style="text-align: left;">On <%= @note.date.strftime("%c") %></p>
-        <% topics = " " %>
+        <% topics = "Categories: " %>
         <% @note.topics.each do |topic| %>
-          <% topics += topic.name + " " %>
+          <% topics += topic.name %>
+          <% topics += ", " if topic != @note.topics.last %>
         <% end %>
-        <p><%= topics %></p>        
+        <p><%= topics %></p>    
+      </div> <!-- ./date topics -->   
       <p><%= @note.content %></p>
       <% @note.links.each do |link| %>
         <a href="<%= link %>"><%= link %></a>
