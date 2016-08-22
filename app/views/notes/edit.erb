@@ -12,7 +12,7 @@
           <input id="hidden" type="hidden" name="_method" value="patch">
         <!-- topic select -->
           <label for="select-topic">Select a topic: </label>
-          <select id="topic-multiselect" name="note[topic_ids][]" multiple="multiple">
+          <select id="topic-multiselect" name="topic_ids[]" multiple="multiple">
           <% Topic.all.each do |topic| %>
             <option id="topic_<%= topic.id %>" value="<%= topic.id %>" <%= 'selected' if @note.topics.include?(topic) %>><%= topic.name %></option>
           <% end %>
