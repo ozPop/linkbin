@@ -63,15 +63,32 @@
   background-color: #E6E8E7;
 }
 
-.date.topics {
-  display: flex;
-  justify-content: space-between;
+.note.meta {
+  /*display: flex;*/
+  /*justify-content: sjpace-between;*/
   font-size: 12px;
 }
 
-.date.topics p {
+.note.meta > div {
   margin: 8px 2px;
   align-items: center;
+}
+
+.note.meta .date-category {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0px;
+}
+
+.note.meta .date-category p {
+  margin: 0px;
+  border-bottom: 1px solid #333333;
+  font-weight: bold;
+}
+
+.note.meta .username-topics {
+  display: flex;
+  justify-content: space-between;
 }
 
 .note-configs {

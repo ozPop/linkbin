@@ -7,28 +7,41 @@
 
   <div class="content wrap">
     <h2><%= @note.description %></h2>
-    <div class="note wrap">
-      <div class="date topics">
-        <p style="text-align: left;">On <%= @note.date.strftime("%c") %></p>
-        <% topics = "Categories: " %>
-        <% @note.topics.each do |topic| %>
-          <% topics += topic.name %>
-          <% topics += ", " if topic != @note.topics.last %>
+    <div class="notes wrap">
+      <div class="note wrap">
+        <div class="note meta">
+          <div class="date-category">
+            <p style="text-align: left;">On <%= @note.date.strftime("%c") %></p>
+            <% topics = "" %>
+            <% @note.topics.each do |topic| %>
+              <% topics += topic.name %>
+              <% topics += ", " if topic != @note.topics.last %>
+            <% end %>
+            <p>Categories</p>
+          </div> <!-- ./date-category -->
+          <div class="username-topics">
+            <% author_id = User.find(@note.user_id).id %>
+            <% if author_id.to_i == session[:user_id].to_i %>
+              <p>By: You</p>
+            <% else %>
+              <p>By: <%= User.find(@note.user_id).username %></p>
+            <% end %>
+            <p><%= topics %></p>
+          </div> <!-- ./username-topics -->
+        </div> <!-- ./note meta -->   
+        <p><%= @note.content %></p>
+        <% @note.links.each do |link| %>
+          <a href="<%= link %>"><%= link %></a><br>
         <% end %>
-        <p><%= topics %></p>    
-      </div> <!-- ./date topics -->   
-      <p><%= @note.content %></p>
-      <% @note.links.each do |link| %>
-        <a href="<%= link %>"><%= link %></a>
-      <% end %>
-      <!-- Show edit button to owner of note -->
-      <% if @note.user_id == session[:user_id] %>
-      <div class="note-configs">
-        <p class="note-config"><a href="/notes/<%=@note.id%>/edit"><span class="glyphicon glyphicon-edit"><span></a></p>
-        <p class="note-config"><a href="/notes/<%=@note.id%>/delete"><span class="glyphicon glyphicon-trash"><span></a></p>
+        <!-- Show edit button to owner of note -->
+        <% if @note.user_id == session[:user_id] %>
+        <div class="note-configs">
+          <p class="note-config"><a href="/notes/<%=@note.id%>/edit"><span class="glyphicon glyphicon-edit"><span></a></p>
+          <p class="note-config"><a href="/notes/<%=@note.id%>/delete"><span class="glyphicon glyphicon-trash"><span></a></p>
+        </div>
+        <% end %>
       </div>
-      <% end %>
-    </div> <!-- ./end note wrap -->
+    </div> <!-- ./end notes wrap -->
   </div> <!-- ./end content wrap -->
 
 </div>

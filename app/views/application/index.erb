@@ -14,25 +14,31 @@
     <div class="notes wrap">
       <% Note.all.reverse.each do |note| %>
         <div class="note wrap">
-          <div class="date topics">
-            <p style="text-align: left;">On <%= note.date.strftime("%c") %>, by: <%= User.find(note.user_id).username %></p>
-            <% topics = "Categories: " %>
-            <% note.topics.each do |topic| %>
-              <% topics += topic.name %>
-              <% topics += ", " if topic != note.topics.last %>
-            <% end %>
-            <p><%= topics %></p>
-          </div>
+          <div class="note meta">
+            <div class="date-category">
+              <p style="text-align: left;">On <%= note.date.strftime("%c") %></p>
+              <% topics = "" %>
+              <% note.topics.each do |topic| %>
+                <% topics += topic.name %>
+                <% topics += ", " if topic != note.topics.last %>
+              <% end %>
+              <p>Categories</p>
+            </div> <!-- ./date-category -->
+            <div class="username-topics">
+              <p>By: <%= User.find(note.user_id).username %></p>
+              <p><%= topics %></p>
+            </div> <!-- ./username-topics -->
+          </div> <!-- ./note meta -->
           <h2><%= note.description %></h2>
           <% note.links.each do |link| %>
-            <a href="<%= link %>"><%= link %></a>
+            <a href="<%= link %>"><%= link %></a><br>
           <% end %>
           <div class="note-configs">
             <p class="note-config"><a href="/note/<%=note.id%>"><span class="glyphicon glyphicon-eye-open"><span></a></p>
           </div>
         </div>
       <% end %>
-    </div> <!-- ./end note wrap -->
+    </div> <!-- ./end notes wrap -->
   </div> <!-- ./end content wrap -->
   
 </div>
