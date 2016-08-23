@@ -21,7 +21,7 @@
   margin-top: 30px;
 }
 
-.greeting h1 {
+.greeting {
   margin-bottom: 0px;
 }
 
@@ -30,18 +30,17 @@
   color: white;
 }
 
-.greeting h1 .phrase {
-  padding: 0 30px;
+.greeting .phrase.top {
+  padding: 10px 30px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  margin-bottom: 3px;
 }
 
-.greeting h3 {
-  margin-top: 12px;
-}
-
-.greeting h3 .phrase {
-  padding: 0 50px;
+.greeting .phrase.bottom {
+  width: 99%;
+  margin: 0 auto;
+  padding: 5px 50px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
