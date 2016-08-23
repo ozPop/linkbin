@@ -4,9 +4,9 @@
     <div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><%= flash[:message] %></div>
   <% end %>
 
-  <div class="container greeting">
-    <h1 class="row phrase top"><span>Welcome to <span class="brand-color">linkbin</span></span></h1>
-    <h3 class="row phrase bottom"><span>Let me organize your links</span></h3>
+  <div class="greeting">
+    <h1 class="phrase top"><span>Welcome to <span class="brand-color">linkbin</span></span></h1>
+    <h3 class="phrase bottom"><span>Let me organize your links</span></h3>
   </div>
 
   <div class="content wrap">
@@ -31,7 +31,7 @@
           </div> <!-- ./note meta -->
           <h2><%= note.description %></h2>
           <% note.links.each do |link| %>
-            <a href="<%= link %>"><%= link %></a><br>
+            <div class="note-link"><a href="<%= link %>"><%= link %></a></div><br>
           <% end %>
           <div class="note-configs">
             <p class="note-config"><a href="/note/<%=note.id%>"><span class="glyphicon glyphicon-eye-open"><span></a></p>

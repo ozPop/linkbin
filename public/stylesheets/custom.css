@@ -38,7 +38,7 @@
 }
 
 .greeting .phrase.bottom {
-  width: 99%;
+  width: 98%;
   margin: 0 auto;
   padding: 5px 50px;
   border-bottom-left-radius: 10px;
@@ -98,6 +98,16 @@
 .note-config span {
   font-size: 25px;
   padding: 0 2px 0;
+}
+
+/* Div Shortener*/
+/* http://stackoverflow.com/a/13817751/6664582 */
+.note-link {
+  width:200px;
+  margin: 0 auto;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap; 
 }
 
 /* Centering items in flex-box  */
