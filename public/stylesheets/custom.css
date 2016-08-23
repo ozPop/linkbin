@@ -7,28 +7,81 @@
 #footer {
   margin-top: 1em;
   text-align: center;
-  border-top: 2px solid black;
+  border-top: 2px solid #333333;
+}
+
+.brand-color {
+  color: #008CBA;
+  font-weight: bold;
 }
 
 /* Layout styles */
 
-.content.wrap > h2 {
-  padding: 10px;
-  background-color: #f7f7f7;
-  margin-bottom: 0;
+.greeting {
+  margin-top: 30px;
 }
 
-.note.wrap {
-  padding: 40px 10px 20px 10px;
-  background-color: #f7f7f7;
-  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+.greeting h1 {
+  margin-bottom: 0px;
+}
+
+.greeting .phrase {
+  background: #333333;
+  color: white;
+}
+
+.greeting h1 .phrase {
+  padding: 0 30px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.greeting h3 {
+  margin-top: 12px;
+}
+
+.greeting h3 .phrase {
+  padding: 0 50px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.content.wrap > h2 {
+  padding: 10px;
+  border-bottom: 2px solid #333333;
+  text-align: left;
+}
+
+/* NOTE styles */
+
+.notes.wrap .note.wrap {
+  margin: 0 10px 12px;
+  padding: 2px;
+  -moz-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  background-color: #E6E8E7;
 }
 
 .date.topics {
   display: flex;
   justify-content: space-between;
+  font-size: 12px;
+}
+
+.date.topics p {
+  margin: 8px 2px;
+  align-items: center;
+}
+
+.note-configs {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.note-config span {
+  font-size: 25px;
+  padding: 0 2px 0;
 }
 
 /* Centering items in flex-box  */

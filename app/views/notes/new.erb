@@ -36,12 +36,12 @@
         <label for="description"></label>
         <input type="text" name="description" class="form-control" placeholder="Description" required autofocus>
         <label for="link"></label>
-        <input type="text" name="links[]" class="form-control" placeholder="Link" required autofocus>
+        <input type="url" name="links[]" class="form-control" placeholder="Link" required>
         <div class="input_fields_wrap">
           <button class="add_field_button">Add Another Link</button>
         </div>
         <label for="content"></label>
-        <textarea type="textarea" name="content" class="form-control"  required autofocus></textarea>
+        <textarea type="textarea" name="content" class="form-control" placeholder="Content" required></textarea>
         <button class="btn btn-lg btn-primary btn-block" type="submit" value="submit">Bin it</button>
       </form>
     </div>

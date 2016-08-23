@@ -6,10 +6,10 @@
   <% end %>
 
   <div class="content wrap">
-    <h2>Your links in a bin: </h2>
-    <div class="note wrap">
+    <h2>Your links: </h2>
+    <div class="notes wrap">
       <% @user.notes.reverse.each do |note| %>
-        <div class="">
+        <div class="note wrap">
           <div class="date topics">
             <p style="text-align: left;">On <%= note.date.strftime("%c") %>, by: <%= @user.username %></p>
             <% topics = "Categories: " %>
@@ -23,7 +23,9 @@
           <% note.links.each do |link| %>
             <a href="<%= link %>"><%= link %></a>
           <% end %>
-          <p style="text-align: right;"><span><a href="/note/<%=note.id%>">View Item</a><span></p>
+          <div class="note-configs">
+            <p class="note-config"><a href="/note/<%=note.id%>"><span class="glyphicon glyphicon-eye-open"><span></a></p> 
+          </div>
         </div>
       <% end %>
     </div> <!-- ./end note wrap -->

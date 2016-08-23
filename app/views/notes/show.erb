@@ -23,8 +23,10 @@
       <% end %>
       <!-- Show edit button to owner of note -->
       <% if @note.user_id == session[:user_id] %>
-        <p style="text-align: right;"><span><a href="/notes/<%=@note.id%>/edit">Edit Item</a><span></p>
-        <p style="text-align: right;"><span><a href="/notes/<%=@note.id%>/delete">Delete Item</a><span></p>
+      <div class="note-configs">
+        <p class="note-config"><a href="/notes/<%=@note.id%>/edit"><span class="glyphicon glyphicon-edit"><span></a></p>
+        <p class="note-config"><a href="/notes/<%=@note.id%>/delete"><span class="glyphicon glyphicon-trash"><span></a></p>
+      </div>
       <% end %>
     </div> <!-- ./end note wrap -->
   </div> <!-- ./end content wrap -->
