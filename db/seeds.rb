@@ -1,11 +1,11 @@
 default_topics = [
-  "Javascript",
-  "Ruby",
-  "HTML",
-  "CSS",
-  "Bootstrap",
-  "Rails",
-  "Sinatra"
+  "javascript",
+  "ruby",
+  "html",
+  "css",
+  "bootstrap",
+  "rails",
+  "sinatra"
 ]
 
 default_topics.each do |topic|

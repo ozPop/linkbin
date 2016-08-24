@@ -24,7 +24,8 @@ ActiveRecord::Schema.define(version: 20160818155352) do
     t.string   "description"
     t.text     "content"
     t.string   "links",         array: true
-    t.datetime "date"
+    t.datetime "date_created"
+    t.datetime "date_updated"
     t.boolean  "public_access"
     t.integer  "user_id"
   end

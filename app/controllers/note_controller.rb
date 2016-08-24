@@ -10,34 +10,24 @@ class NoteController < ApplicationController
 
   post '/notes' do
     # should handle if statement using JS to not loose inputs
-    if params[:note].nil? && params[:topic][:name].empty?
+    if params[:topic][:names].nil?
       flash[:message] = "You have to select or create a topic!"
       redirect '/notes/new'
     else
-      note = Note.new do |n|
-        n.description = params[:description]
-        n.links = params[:links]
-        n.content = params[:content]
-        n.date = Time.now
-        n.public_access = params.has_key?("public")
-        n.user_id = session[:user_id]
+      params[:note]["date_created"] = Time.now
+      params[:note]["user_id"] = current_user(session).id
+      note = Note.new(params[:note])
+      unless params[:topic][:names].nil?
+        params[:topic][:names].each do |n|
+          if Topic.find_by(name: n.downcase)
+            binding.pry
+            note.topics << Topic.find_by(name: n.downcase)
+          else
+            note.topics.build(name: n.downcase)
+          end
+        end
       end
       note.save
-      unless params[:note][:topic_ids].empty?
-        params[:note][:topic_ids].each do |id|
-          topic = Topic.find(id)
-          NoteTopic.create(note_id: note.id, topic_id: topic.id)
-        end
-      end
-      unless params[:topic][:name].empty?
-        if Topic.find_by(name: params[:topic][:name])
-          flash[:message] = "The topic already exists, please select it"
-          reditect '/notes/new'
-        else
-          topic = Topic.create(params[:topic])
-          NoteTopic.create(note_id: note.id, topic_id: topic.id)
-        end
-      end
     end
     flash[:message] = "Success!"
     redirect "/users/#{current_user(session).slug}"
@@ -79,9 +69,9 @@ class NoteController < ApplicationController
       # The logic below is extremely bad !!!!
       # currently removing all associations and repopulating the DB
       # should update when possible delete where needed or add new ones if none exist
-      unless params[:topic_ids].nil?
+      unless params[:note][:topic_ids].nil?
         note.topics.clear
-        topics = params[:topic_ids].map do |id|
+        topics = params[:note][:topic_ids].map do |id|
           topic = Topic.find(id)
           NoteTopic.create(note_id: note.id, topic_id: topic.id)
         end

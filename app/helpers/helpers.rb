@@ -5,7 +5,7 @@ module Helpers
     end
 
     def current_user(session)
-      User.find(session[:user_id])
+      @user ||= User.find(session[:user_id])
     end
   end
 end
