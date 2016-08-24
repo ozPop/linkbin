@@ -9,24 +9,15 @@ class NoteController < ApplicationController
   end
 
   post '/notes' do
-    # should handle if statement using JS to not loose inputs
-    if params[:topic][:names].nil?
+    # should make inputs persist upon redirect
+    if params[:topic][:names][0].empty?
       flash[:message] = "You have to select or create a topic!"
       redirect '/notes/new'
     else
       params[:note]["date_created"] = Time.now
       params[:note]["user_id"] = current_user(session).id
       note = Note.new(params[:note])
-      unless params[:topic][:names].nil?
-        params[:topic][:names].each do |n|
-          if Topic.find_by(name: n.downcase)
-            binding.pry
-            note.topics << Topic.find_by(name: n.downcase)
-          else
-            note.topics.build(name: n.downcase)
-          end
-        end
-      end
+      assign_topics(note, params)
       note.save
     end
     flash[:message] = "Success!"
@@ -60,16 +51,10 @@ class NoteController < ApplicationController
       params[:note]["user_id"] = current_user(session).id
       note = Note.find(params[:id])
       note.update(params[:note])
-      note.topics.clear
       # currently removing all associations and repopulating the DB
-      # should use update
-      params[:topic][:names].each do |n|
-        if Topic.find_by(name: n.downcase)
-          note.topics << Topic.find_by(name: n.downcase)
-        else
-          note.topics.build(name: n.downcase) if n != ""
-        end
-      end
+      # should use update in some way
+      note.topics.clear
+      assign_topics(note, params)
       note.save
     end
     flash[:message] = "Success!"
