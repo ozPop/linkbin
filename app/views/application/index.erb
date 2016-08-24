@@ -16,7 +16,11 @@
         <div class="note wrap">
           <div class="note meta">
             <div class="date-category">
-              <p style="text-align: left;">On <%= note.date.strftime("%c") %></p>
+              <% if note.date_updated.nil? %>
+                <p style="text-align: left;">Created: <%= note.date_created.localtime.strftime("%a %H:%M:%S %-m/%Y") %></p>
+                <% else %>
+                <p style="text-align: left;">Updated: <%= note.date_updated.localtime.strftime("%a %H:%M:%S %-m/%Y") %></p>
+              <% end %>
               <% topics = "" %>
               <% note.topics.each do |topic| %>
                 <% topics += topic.name %>
