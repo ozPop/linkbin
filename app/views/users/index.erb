@@ -31,7 +31,11 @@
           </div> <!-- ./note meta -->
           <h2><%= note.description %></h2>
           <% note.links.each do |link| %>
-            <a href="<%= link %>"><%= link %></a><br>
+            <div class="note-link-wrap">
+              <div class="note-link">
+                <a href="<%= link %>"><%= link %></a><br>
+              </div>
+            </div>
           <% end %>
           <div class="note-configs">
             <p class="note-config"><a href="/note/<%=note.id%>"><span class="glyphicon glyphicon-eye-open"><span></a></p> 

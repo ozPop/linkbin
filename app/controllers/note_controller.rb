@@ -50,7 +50,9 @@ class NoteController < ApplicationController
       params[:note]["date_updated"] = Time.now
       params[:note]["user_id"] = current_user(session).id
       note = Note.find(params[:id])
+      binding.pry
       note.update(params[:note])
+      binding.pry
       # currently removing all associations and repopulating the DB
       # should use update in some way
       note.topics.clear

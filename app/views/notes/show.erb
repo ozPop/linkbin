@@ -35,7 +35,11 @@
         </div> <!-- ./note meta -->   
         <p><%= @note.content %></p>
         <% @note.links.each do |link| %>
-          <a href="<%= link %>"><%= link %></a><br>
+        <div class="note-link-wrap">
+          <div class="note-link">
+            <a href="<%= link %>"><%= link %></a>
+          </div>
+        </div>
         <% end %>
         <!-- Show edit button to owner of note -->
         <% if @note.user_id == session[:user_id] %>
