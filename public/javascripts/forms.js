@@ -16,7 +16,7 @@ $(document).ready(function() {
         e.preventDefault();
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append('<div><input id="" type="url" name="links[]" class="form-control" placeholder="Link" required autofocus><button class="remove_field"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></div>'); //add input box
+            $(wrapper).append('<div class="input-wrap"><input type="url" name="links[]" class="form-control" placeholder="Link" required autofocus><button class="remove_field"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></div>'); //add input box
         }
     });
     

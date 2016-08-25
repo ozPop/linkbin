@@ -66,11 +66,54 @@
     margin-top: 10px;
 }
 
+/******* NOTE FORM **********/
+
+.note .form {
+    -moz-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    background-color: #E6E8E7;
+}
+
+.note .form button {
+  margin-top: 5px;
+}
+
+.note .form a {
+  width: 85%;
+  margin: 5px auto 0;
+}
+
+.select-topic-wrap label {
+  font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  display: flex;
+  font-size: 15px;
+  line-height: 1.4;
+  color: #222222;
+}
+
+.multiselect-native-select
+  .btn-group,
+  .dropdown-toggle,
+  .dropdown-menu {
+  width: 100%;
+}
+
+.multiselect-native-select 
+  .checkbox input {
+    margin-top: 5px;
+}
+
+.create-topic-wrap label {
+  font-size: 18px;
+  font-weight: bold;
+}
 
 /**********  CSS3 TOGGLE CHECKBOX STYLES *************/
 
 .toggle-wrap {
     display: flex;
+    margin-top: 12px;
 }
 
 /* Taken from : http://cssdeck.com/labs/css-checkbox-styles */
@@ -155,4 +198,8 @@
     left: 43px;
 }
 
+/* LINK FIELDS */
 
+.input_fields_wrap .input-wrap {
+  display: flex;
+}

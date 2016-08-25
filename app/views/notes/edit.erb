@@ -6,20 +6,23 @@
   <% end %>
 
   <div class="content wrap">
-    <h2>Edit your bin item</h2>
+    <h2>Edit item</h2>
     <div class="note wrap">
         <form class="form " action="/notes/<%=@note.id%>/edit" method="POST">
           <input id="hidden" type="hidden" name="_method" value="patch">
+
         <!-- topic select -->
-          <label for="select-topic">Select a topic: </label>
-          <select id="topic-multiselect" name="topic[names][]" multiple="multiple">
-          <% Topic.all.each do |topic| %>
-            <option id="topic_<%= topic.id %>" value="<%= topic.name %>" <%= 'selected' if @note.topics.include?(topic) %>><%= topic.name %></option>
-          <% end %>
-          </select>
+          <div class="select-topic-wrap">
+            <label for="select-topic">Select a topic: </label>
+            <select id="topic-multiselect" name="topic[names][]" multiple="multiple">
+            <% Topic.all.each do |topic| %>
+              <option id="topic_<%= topic.id %>" value="<%= topic.name %>" <%= 'selected' if @note.topics.include?(topic) %>><%= topic.name %></option>
+            <% end %>
+            </select>
+          </div>
 
         <!-- topic create -->
-          <div>
+          <div class="create-topic-wrap">
             <label for="create-topic">OR</label>
             <input type="text" name="topic[names][]" class="form-control" placeholder="Enter topic">
           </div>
@@ -41,11 +44,12 @@
             <input type="text" name="note[links][]" class="form-control" value="<%= link %>" required autofocus>
           <% end %>
           <div class="input_fields_wrap">
-            <button class="add_field_button">Add Another Link</button>
+            <button type="button" class="btn btn-default add_field_button" aria-label="Left Align"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
           </div>
           <label for="content"></label>
           <textarea type="textarea" name="note[content]" class="form-control" required autofocus><%= @note.content %></textarea>
           <button class="btn btn-lg btn-primary btn-block" type="submit" value="submit">Update</button>
+          <a class="btn btn-sm btn-default btn-block" href="/users/<%= current_user(session).slug %>">Cancel</a>
         </form>
     </div> <!-- ./end note wrap -->
   </div> <!-- ./end content wrap -->
