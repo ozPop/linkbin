@@ -90,23 +90,13 @@
   justify-content: space-between;
 }
 
-.note-configs {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.note-config span {
-  font-size: 25px;
-  padding: 0 2px 0;
-}
-
 .note-link-wrap {
   display: flex;
   width: 90%;
   margin: 10px auto;
-  -moz-box-shadow: 0 0 2px 0px #000000;
-  -webkit-box-shadow: 0 0 2px 0px #000000;
-  box-shadow: 0 0 2px 0px #000000;
+  -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.44);
+  -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.44);
+  box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.44);
 }
 
 /* Div Shortener*/
@@ -117,6 +107,17 @@
   overflow:hidden;
   text-overflow:ellipsis;
   white-space: nowrap; 
+}
+
+.note-configs {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+}
+
+.note-config span {
+  font-size: 25px;
+  padding: 0 2px 0;
 }
 
 /* Centering items in flex-box  */
