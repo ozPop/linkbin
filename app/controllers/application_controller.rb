@@ -24,14 +24,17 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/signup' do
+    flash[:message] = validate_inputs(params)
+    if !flash[:message].nil?
+      flash[:message]
+      redirect '/signup'
+    end
     user = User.create(params)
     if user.save
       session[:user_id] = user.id
       flash[:message] = "Successfully Created Account"
       redirect '/'
     else
-      # possibly add detailed validations for:
-        # username, password, email
       flash[:message] = "Something went wrong"
       redirect '/signup'
     end
