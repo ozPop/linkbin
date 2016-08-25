@@ -17,6 +17,10 @@ Other notes:
 
 Future improvements:
 
+* Inputs should persist upon validation triggers
+    * signup page
+    * new and update forms
+* Add link validation to new and edit forms
 * Add filtering of categories when displaying items
 * Add searching through categories
 * Add Captcha at signup
