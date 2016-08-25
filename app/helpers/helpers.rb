@@ -27,6 +27,10 @@ module Helpers
       valid_email_regex.match(email).nil?
     end
 
+    def public_access(params)
+      params[:note][:public_access] ? true : false
+    end
+
     def assign_topics(note, params)
       params[:topic][:names].each do |n|
         if Topic.find_by(name: n.downcase)

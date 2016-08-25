@@ -14,6 +14,7 @@ class NoteController < ApplicationController
       flash[:message] = "You have to select or create a topic!"
       redirect '/notes/new'
     else
+      params[:note]["public_access"] = public_access(params)
       params[:note]["date_created"] = Time.now
       params[:note]["user_id"] = current_user(session).id
       note = Note.new(params[:note])
@@ -27,16 +28,22 @@ class NoteController < ApplicationController
   get '/note/:id' do
     if logged_in?
       @note = Note.find(params[:id])
-      erb :'/notes/show'
-    else
-      redirect '/'
+      if @note.public_access
+        erb :'/notes/show'
+      else
+        redirect '/'
+      end
     end
   end
 
   get '/notes/:id/edit' do
-    @note = Note.find(params[:id])
-    if logged_in? && current_user(session).id == @note.user_id
-      erb :'/notes/edit'
+    if logged_in?
+      @note = Note.find(params[:id])
+      if current_user(session).id == @note.user_id
+        erb :'/notes/edit'
+      else
+        redirect '/'
+      end
     else
       redirect '/'
     end
@@ -47,12 +54,11 @@ class NoteController < ApplicationController
       flash[:message] = "You have to select or create a topic!"
       redirect "/notes/#{params[:id]}/edit"
     else
+      params[:note]["public_access"] = public_access(params)
       params[:note]["date_updated"] = Time.now
       params[:note]["user_id"] = current_user(session).id
       note = Note.find(params[:id])
-      binding.pry
       note.update(params[:note])
-      binding.pry
       # currently removing all associations and repopulating the DB
       # should use update in some way
       note.topics.clear
@@ -64,12 +70,18 @@ class NoteController < ApplicationController
   end
 
   get '/notes/:id/delete' do
-    note = Note.find(params[:id])
-    if logged_in? && current_user(session).id == note.user_id
-      note.destroy
-      flash[:message] = "Successfully Deleted Item"
+    if logged_in?
+      note = Note.find(params[:id])
+      if current_user(session).id == note.user_id
+        note.destroy
+        flash[:message] = "Successfully Deleted Item"
+        redirect "/users/#{current_user(session).slug}"
+      else
+        redirect '/'
+      end
+    else
+      redirect '/'
     end
-    redirect '/'
   end
 
 end

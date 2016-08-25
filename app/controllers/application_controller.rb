@@ -42,7 +42,7 @@ class ApplicationController < Sinatra::Base
 
   get '/login' do
     if logged_in?
-      redirect '/'
+      redirect "/users/#{current_user(session).slug}"
     else
       erb :'/application/login'
     end
@@ -53,7 +53,7 @@ class ApplicationController < Sinatra::Base
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       flash[:message] = "Successfully Logged In"
-      redirect '/'
+      redirect "/users/#{current_user(session).slug}"
     else
       flash[:message] = "Something went wrong"
       redirect '/login'
