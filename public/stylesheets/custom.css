@@ -15,6 +15,24 @@
   font-weight: bold;
 }
 
+/* Nav styles */
+
+@media (min-width: 768px) {
+  .navbar-nav {
+    display: inline-flex;
+    width: 85%;
+    justify-content: space-between;
+  }
+  .navbar-nav li {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.navbar-nav span {
+  font-size: 20px
+}
+
 /* Layout styles */
 
 .greeting {
