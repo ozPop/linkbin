@@ -27,8 +27,9 @@ class NoteController < ApplicationController
 
   get '/note/:id' do
     if logged_in?
+      # binding.pry
       @note = Note.find(params[:id])
-      if @note.public_access
+      if @note.public_access || current_user(session).id == @note.user_id
         erb :'/notes/show'
       else
         redirect '/'
